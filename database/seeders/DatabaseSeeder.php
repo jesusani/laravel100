@@ -3,6 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
+
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,10 +18,25 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
+        /*
+$roleadmin = Role::create(['name' => 'admin']);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+$rolefisio = Role::create(['name' => 'fisio']);
+$rolepatient = Role::create(['name' => 'patient']);
+$permissionedit = Permission::create(['name' => 'edit']);
+$permissionview = Permission::create(['name' => 'view']);
+$permissiondelete = Permission::create(['name' => 'delete']);
+
+$roleadmin->syncPermissions(['edit', 'delete','view']);
+$rolefisio->givePermissionTo($permissionedit, $permissionview);
+$permissionview->assignRole($rolepatient);*/
+
+        $user=User::factory()->create([
+            'name' => 'Testtest',
+            'email' => 'example@example.com',
+
         ]);
+        $user->givePermissionTo('edit', 'delete');
     }
+
 }
