@@ -36,6 +36,18 @@ class ProfileController extends Controller
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
+    /**
+     * Update the user's Role.
+     */
+    public function role(ProfileUpdateRequest $request): View
+    {
+        $request->user()->assignRole($request->role());
+
+
+        return view('profile.edit', [
+            'user' => $request->user(),
+        ]);
+    }
 
     /**
      * Delete the user's account.

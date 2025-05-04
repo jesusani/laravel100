@@ -15,7 +15,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     lista de permisos:
-                    
+
                     <div> puede editar {{ Auth::user()->assignRole('patient') }}</div>
                     <div> puede editar {{ Auth::user()->can('edit') }}</div>
                     <div> puede ver {{ Auth::user()->can('view') }}</div>
@@ -23,6 +23,9 @@
                     <div> role admin  {{ Auth::user()->hasRole('admin') }}</div>
                     <div> role fisio  {{ Auth::user()->hasRole('fisio') }}</div>
                     <div> role patient  {{ Auth::user()->hasRole('patient') }}
+                        <div> role admin  {{ Role::find(1)->givePermissionTo(Permission::all()) }}</div>
+                        <div> role fisio  {{ Auth::user()->hasRole('fisio') }}</div>
+                        <div> role patient  {{ Auth::user()->hasRole('patient') }}
 
                     </div>
 

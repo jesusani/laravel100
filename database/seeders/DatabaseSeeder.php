@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User::factory(10)->create();
-        /*
+/*
 $roleadmin = Role::create(['name' => 'admin']);
 
 $rolefisio = Role::create(['name' => 'fisio']);
@@ -32,8 +32,8 @@ $rolefisio->givePermissionTo($permissionedit, $permissionview);
 $permissionview->assignRole($rolepatient);*/
 
         $user=User::factory()->create([
-            'name' => 'Testtest',
-            'email' => 'example@example.com',
+            'name' => 'example',
+            'email' => 'example@text.com',
 
         ]);
         $user->givePermissionTo('edit', 'delete');

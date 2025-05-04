@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
 {
@@ -19,7 +21,10 @@ class AdminController extends Controller
      public function index():View
      {
         $users = User::all();
-        return view('admin.dashboard', $users);
+        $roles = Role::all();
+        $permisions = Permission::all();
+
+        return view('admin.dashboard', [$users, $roles, $permisions]);
 
      }
     public function users(Request $request): View
