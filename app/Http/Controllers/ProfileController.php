@@ -44,7 +44,7 @@ class ProfileController extends Controller
         $request->user()->assignRole($request->role());
 
 
-        return view('profile.edit', [
+        return view('dashboard.admin', [
             'user' => $request->user(),
         ]);
     }

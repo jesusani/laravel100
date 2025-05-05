@@ -22,9 +22,18 @@ class AdminController extends Controller
      {
         $users = User::all();
         $roles = Role::all();
-        $permisions = Permission::all();
+        $permissions = Permission::all();
+        $user = Auth::user();
 
-        return view('admin.dashboard', [$users, $roles, $permisions]);
+      /*  return view('admin.dashboard', [
+            'users' => $users,
+            'roles' => $roles,
+            'permissions' => $permissions,
+            'user' => Auth::user()
+        ]);*/
+        return view('admin.dashboard', compact('users','user'));
+        //return redirect()->route('dashboard')->with('user', $user);
+
 
      }
     public function users(Request $request): View

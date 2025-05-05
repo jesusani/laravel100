@@ -13,17 +13,29 @@
 
     <form method="post" action="{{ route('role.update') }}" class="mt-6 space-y-6">
         @csrf
-        @method('patch')
+        @method('put')
 
         <div>
             <x-input-label for="role" :value="__('Role')" />
-            <x-text-input id="role" name="role" type="text" class="mt-1 block w-full" :value="old('role', $user->getRoleNames()[0])" required autofocus autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+            <x-text-input
+                id="role"
+                name="role"
+                type="text"
+                class="mt-1 block w-full"
+                :value="old('role', $user->getRoleNames()[0])"
+                required />                />
+            <x-input-error class="mt-2" :messages="$errors->get('role')" />
         </div>
 
         <div>
             <x-input-label for="permissions" :value="__('Permissions')" />
-            <x-text-input id="permissions" name="permissions" type="text" class="mt-1 block w-full" :value="old('permissions',json_decode($user->getPermissionsViaRoles(), true)[0]['name']  )" required  />
+            <x-text-input
+                id="permissions"
+                name="permissions"
+                type="text"
+                class="mt-1 block w-full"
+                :value="old('permissions',json_decode($user->getPermissionsViaRoles(), true)[0]['name']  )"
+                required  />
             <x-input-error class="mt-2" :messages="$errors->get('permissions')" />
 
         </div>
