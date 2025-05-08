@@ -24,4 +24,15 @@ Route::group(['middleware' => ['role:admin']], function () {
 
     Route::get('/admin/users', 'AdminController@users')->name('users.list');
 });
+
+Route::group(['middleware' => ['role:fisio']], function () {
+    Route::get('/fisio/dashboard', [FisioController::class, 'index'])->name('dashboard.fisio');
+
+    Route::get('/fisio/patients', 'FisioController@patients')->name('patients.list');
+});
+Route::group(['middleware' => ['role:patient']], function () {
+    Route::get('/patient/dashboard', [patientController::class, 'index'])->name('dashboard.patient');
+
+    Rout
+});
 require __DIR__.'/auth.php';
